@@ -1,0 +1,33 @@
+# Special commands to install caddy for for Amazon Linux 2
+# http://www.asheiduk.de/post/install-caddy-on-amazon-linux-2/
+- name: Install yum copr plugin
+  yum:
+    name: yum-plugin-copr
+    state: present
+
+  # No support for copr in ansible modules, have to do it manually using shell
+  # https://github.com/ansible/ansible/issues/26673
+- name: enable Caddy copr repo
+  # https://stackoverflow.com/a/46024041
+  command: 
+    cmd: yum -y copr enable @caddy/caddy epel-7-$(arch)
+    # Don't run this task if repo is already created
+    creates: /etc/yum.repos.d/_copr_@caddy-caddy.repo
+  
+- name: Install Caddy Webserver
+  yum:
+    name: caddy
+    state: present
+
+- name: Copy caddyfile
+  template:
+    src: templates/Caddyfile.j2
+    dest: /etc/caddy/Caddyfile
+
+# Caddy service is not enabled by default for this distro
+# https://caddyserver.com/docs/install#fedora-redhat-centos
+- name: Start and enable Caddy service
+  service:
+    name: caddy
+    state: started
+    enabled: yes
