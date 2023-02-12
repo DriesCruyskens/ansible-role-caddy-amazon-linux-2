@@ -1,3 +1,4 @@
+---
 # Special commands to install caddy for for Amazon Linux 2
 # http://www.asheiduk.de/post/install-caddy-on-amazon-linux-2/
 - name: Install yum copr plugin
