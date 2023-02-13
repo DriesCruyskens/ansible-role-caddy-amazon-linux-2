@@ -62,4 +62,4 @@ Dependencies
 License
 -------
 
-BSD
+MIT
