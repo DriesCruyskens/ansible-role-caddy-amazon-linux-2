@@ -1,2 +1,4 @@
 ---
 # defaults file for caddy-amazon-linux-2
+domain: ":80"
+reverse_proxy_port: 3000
