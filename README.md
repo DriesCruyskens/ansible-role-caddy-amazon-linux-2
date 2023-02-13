@@ -18,13 +18,21 @@ Installing Caddy on Amazon Linux 2 wasn't so straight forward as I had hoped for
 If you need more customisability, copy and adjust the source code or just overwrite the template with your own.
 
 
+Installation
+--------------
+
+```shell
+ansible-galaxy install driescruyskens.caddy_amazon_linux_2
+```
+
+
 Role Variables and their defaults
 --------------
 
 - domain: ":80"
 - reverse_proxy_port: 3000
   
-  
+
 Example Playbook
 ----------------
 
@@ -33,7 +41,7 @@ Example Playbook
   hosts: all
   name: Install Caddy on Amazon Linux 2
   roles: 
-    - role: caddy_amazon_linux_2
+    - role: driescruyskens.caddy_amazon_linux_2
       vars:
         - domain: "example.com"
         - reverse_proxy_port: 3000
