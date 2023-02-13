@@ -1,4 +1,5 @@
 galaxy_info:
+  role_name: caddy_amazon_linux_2
   author: Dries Cruyskens
   description: Installs and configures Caddy 2 web server on Amazon Linux 2
 
